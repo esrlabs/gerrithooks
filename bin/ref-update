@@ -10,7 +10,7 @@ class RefUpdateHook
   attr_accessor :name
 
   def initialize(name)
-    @projects = [:all]
+    @projects = :all
     @name = name
   end
 
@@ -18,8 +18,17 @@ class RefUpdateHook
     raise "please implement run in #{self}"
   end
 
+  def responsible_for(project)
+    return true if @projects == :all
+    return @project.include?(project)
+  end
+
   def to_s
-    "plugin: #{name} for #{projects.join(', ')}"
+    "plugin: #{name} for #{projects_to_string}"
+  end
+
+  def project_to_string
+    projects == :all ? 'ALL' : projects.join(', ')
   end
 end
 
@@ -36,12 +45,15 @@ class String
 end
 
 args = Hash[*ARGV]
+project = args['--project']
 plugins.each do |plugin|
   io = StringIO.new
   begin
-    plugin.run(args, io)
-    puts "✔ #{plugin.name}".green
-    puts io.string.indent(2)
+    if plugin.responsible_for(project)
+      plugin.run(args, io)
+      puts "✔ #{plugin.name}".green
+      puts io.string.indent(2)
+    end
   rescue => error
     puts "✘ #{plugin.name}".red
     puts io.string.indent(2)
