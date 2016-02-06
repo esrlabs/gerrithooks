@@ -1,7 +1,13 @@
 projects = ['abc']
 
 def run(args, io)
-  io.puts "PWD:"
-  io.puts `pwd`
-  raise 'cannot work'
+  branch_names = Git.bare('.').branches.map{|i|i.full}
+  refname = args['--refname'].gsub('refs/heads/', '')
+
+  return if branch_names.include?(refname)
+
+  conflicting_branch = branch_names.find{|i|i.casecmp(refname) == 0}
+  return unless conflicting_branch
+
+  raise "'#{conflicting_branch}' conflicts with '#{refname}'"
 end
