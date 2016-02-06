@@ -7,7 +7,7 @@ task :default => :spec
 
 desc 'assemble'
 task :assemble do
-  Dir.glob('**/Rakefile').each do |rakefile|
+  Dir.glob('**/rakefile.rb').each do |rakefile|
     cd File.dirname(rakefile) do
       sh "rake clean install"
     end
