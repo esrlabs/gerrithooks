@@ -7,8 +7,9 @@ task :default => :spec
 
 desc 'assemble'
 task :assemble do
-  sh "rake install"
-  cd "gerrithooks_branchname_refupdate" do
-    sh "rake install"
+  Dir.glob('**/Rakefile').each do |rakefile|
+    cd File.dirname(rakefile) do
+      sh "rake clean install"
+    end
   end
 end
