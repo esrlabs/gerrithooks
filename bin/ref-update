@@ -1,17 +1,18 @@
 # coding: utf-8
 require 'frazzle/frazzle'
-require 'colorize'
 require 'git'
 
 registry = Frazzle::Registry.new('gerrithooks', '_', '_')
 
 class RefUpdateHook
-  attr_accessor :projects
   attr_accessor :name
 
   def initialize(name)
-    @projects = :all
     @name = name
+  end
+
+  def projects
+    return :all
   end
 
   def run(args, io)
@@ -19,15 +20,15 @@ class RefUpdateHook
   end
 
   def responsible_for(project)
-    return true if @projects == :all
-    return @project.include?(project)
+    return true if projects == :all
+    return projects.include?(project)
   end
 
   def to_s
     "plugin: #{name} for #{projects_to_string}"
   end
 
-  def project_to_string
+  def projects_to_string
     projects == :all ? 'ALL' : projects.join(', ')
   end
 end
@@ -51,14 +52,14 @@ plugins.each do |plugin|
   begin
     if plugin.responsible_for(project)
       plugin.run(args, io)
-      puts "✔ #{plugin.name}".green
+      puts "OK #{plugin.name}"
       puts io.string.indent(2)
     end
   rescue => error
-    puts "✘ #{plugin.name}".red
+    puts "FAILED #{plugin.name}"
     puts io.string.indent(2)
-    puts error
-    raise error
+    puts error.message
+    exit(1)
   end
 end
 

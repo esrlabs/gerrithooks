@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
   spec.add_dependency "frazzle"
-  spec.add_dependency "colorize"
+  #  spec.add_dependency "colorize" # colors seem not to work in gerrits messages
   spec.add_dependency "git"
 
   spec.add_development_dependency "bundler", "~> 1.11"

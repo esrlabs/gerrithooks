@@ -1,4 +1,6 @@
-projects = ['abc']
+def projects
+  :all
+end
 
 def run(args, io)
   branch_names = Git.bare('.').branches.map{|i|i.full}
