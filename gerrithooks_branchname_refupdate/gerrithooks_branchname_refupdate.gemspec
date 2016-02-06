@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.description   = %q{.}
   spec.homepage      = "http://www.google.com"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.files         = Dir.glob("lib/**/*.rb")
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]

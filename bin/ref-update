@@ -1,22 +1,51 @@
+# coding: utf-8
 require 'frazzle/frazzle'
+require 'colorize'
 
 registry = Frazzle::Registry.new('gerrithooks', '_', '_')
 
-class RefUpdateContext
+class RefUpdateHook
   attr_accessor :projects
   attr_accessor :name
+
   def initialize(name)
-    @projects = :all
+    @projects = [:all]
     @name = name
   end
+
+  def run(args, io)
+    raise "please implement run in #{self}"
+  end
+
   def to_s
     "plugin: #{name} for #{projects.join(', ')}"
   end
 end
 
 plugins = registry.get_plugins('refupdate').map do |plugin|
-  registry.load_plugin(plugin, RefUpdateContext.new(plugin))
+  res = RefUpdateHook.new(plugin)
+  registry.load_plugin(plugin, res)
+  res
 end
 
-puts plugins
+class String
+  def indent(spaces)
+    split("\n").map{|i|"#{' ' * spaces}#{i}"}.join("\n")
+  end
+end
+
+args = Hash[*ARGV]
+plugins.each do |plugin|
+  io = StringIO.new
+  begin
+    plugin.run(args, io)
+    puts "✔ #{plugin.name}".green
+    puts io.string.indent(2)
+  rescue
+    puts "✘ #{plugin.name}".red
+    puts io.string.indent(2)
+    break
+  end
+end
+exit(res)
 

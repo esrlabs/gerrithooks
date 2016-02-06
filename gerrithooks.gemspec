@@ -14,11 +14,13 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://www.google.com"
   spec.licenses    = ['MIT']
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.files         = Dir.glob("lib/**/*.rb") + Dir.glob("bin/**/*")
   spec.bindir        = "bin"
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
   spec.add_dependency "frazzle"
+  spec.add_dependency "colorize"
+  spec.add_dependency "git"
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
