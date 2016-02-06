@@ -41,11 +41,11 @@ plugins.each do |plugin|
     plugin.run(args, io)
     puts "✔ #{plugin.name}".green
     puts io.string.indent(2)
-  rescue
+  rescue => error
     puts "✘ #{plugin.name}".red
     puts io.string.indent(2)
-    break
+    puts error
+    raise error
   end
 end
-exit(res)
 

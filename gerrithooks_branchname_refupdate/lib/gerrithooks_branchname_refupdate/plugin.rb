@@ -1,6 +1,7 @@
 projects = ['abc']
 
-def run(io)
-  io.puts "test"
+def run(args, io)
+  io.puts "PWD:"
+  io.puts `pwd`
   raise 'cannot work'
 end
