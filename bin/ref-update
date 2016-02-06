@@ -1,0 +1,17 @@
+require 'frazzle/frazzle'
+
+registry = Frazzle::Registry.new('gerrithooks', '-', '-')
+
+class RefUpdateContext
+  attr_accessor :projects
+  def initialize()
+    @projects = :all
+  end
+end
+
+plugins = registry.get_all_plugins('refupdate').map do |plugin|
+  registry.load_plugin(plugin, RefUpdateContext.new)
+end
+
+puts plugins
+
