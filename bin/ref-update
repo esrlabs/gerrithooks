@@ -32,9 +32,9 @@ class RefUpdateHook
   end
 end
 
-plugins = registry.get_plugins('refupdate').map do |plugin|
-  res = RefUpdateHook.new(plugin)
-  registry.load_plugin(plugin, res)
+plugins = registry.plugins('refupdate').map do |plugin|
+  res = RefUpdateHook.new(plugin.name)
+  plugin.load(res)
   res
 end
 
