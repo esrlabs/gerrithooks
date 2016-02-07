@@ -20,7 +20,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.add_dependency "frazzle"
   #  spec.add_dependency "colorize" # colors seem not to work in gerrits messages
-  spec.add_dependency "git"
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"

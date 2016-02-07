@@ -1,3 +1,5 @@
+require 'git'
+
 def projects
   :all
 end

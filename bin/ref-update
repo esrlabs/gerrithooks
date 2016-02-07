@@ -1,6 +1,5 @@
 # coding: utf-8
 require 'frazzle/frazzle'
-require 'git'
 
 registry = Frazzle::Registry.new('gerrithooks', '_', '_')
 
