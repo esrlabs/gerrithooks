@@ -1,8 +1,5 @@
+# coding: utf-8
 require 'git'
-
-def projects
-  :all
-end
 
 def run(args, io)
   branch_names = Git.bare('.').branches.map{|i|i.full}
