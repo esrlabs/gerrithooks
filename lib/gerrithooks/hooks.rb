@@ -23,6 +23,9 @@ class Hook
   def projects_to_string
     projects == :all ? 'ALL' : projects.join(', ')
   end
+  # emulate a better version of rakes sh
+  # @return stdout of the command
+  # @raise Exception if the command failed
   def sh(command)
     res = `#{command}`
     exit_status = $?.exitstatus
@@ -33,31 +36,19 @@ class Hook
   end
 end
 
-class PatchsetCreatedHook < Hook
-  def intialize(name)
-    super(name)
-  end
-end
-
-class RefUpdateHook < Hook
-  def initialize(name)
-    super(name)
-  end
-end
-
 class String
   def indent(spaces)
     split("\n").map{|i|"#{' ' * spaces}#{i}"}.join("\n")
-    end
   end
+end
 
-
-  args = Hash[*ARGV]
+args = Hash[*ARGV]
 project = args['--project']
+raise 'no project given' unless project
 
 def run_hooks(hook)
   plugins = registry.plugins(hook.downcase).map do |plugin|
-    res = Object::const_get(hook + "Hook").new(plugin.name)
+    res = Hook.new(plugin.name)
     plugin.load(res)
     res
   end
@@ -67,7 +58,9 @@ def run_hooks(hook)
     begin
       if plugin.responsible_for(project)
         plugin.run(args, io)
+        # i use ok here instead of a nice
         puts "OK #{plugin.name}"
+        # unicode checkmark, because this is lost in the git output
         puts io.string.indent(2)
       end
     rescue => error
@@ -77,6 +70,4 @@ def run_hooks(hook)
       exit(1)
     end
   end
-
 end
-
