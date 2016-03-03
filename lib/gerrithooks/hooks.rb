@@ -23,6 +23,14 @@ class Hook
   def projects_to_string
     projects == :all ? 'ALL' : projects.join(', ')
   end
+  def sh(command)
+    res = `#{command}`
+    exit_status = $?.exitstatus
+    if exit_status != 0
+      raise "'#{command} exited with #{exit_status}"
+    end
+    return res
+  end
 end
 
 class PatchsetCreatedHook < Hook
@@ -40,11 +48,11 @@ end
 class String
   def indent(spaces)
     split("\n").map{|i|"#{' ' * spaces}#{i}"}.join("\n")
+    end
   end
-end
 
 
-args = Hash[*ARGV]
+  args = Hash[*ARGV]
 project = args['--project']
 
 def run_hooks(hook)
