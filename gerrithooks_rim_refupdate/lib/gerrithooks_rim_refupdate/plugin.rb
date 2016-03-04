@@ -23,23 +23,27 @@ def not_delete_branch_operation(args)
 end
 
 def run(args, io)
+  #rim_cmd = "ruby /home/gerrit2/sim/rim/rim.rb"
+  # this is the version installed as a gem to the @rim gemset
+  rim_cmd = "rim"
+
   # IMPORTANT: ensure that the sim user name is correct! (i.e. not "sim sim@esrlabs.com", etc)
   if not_scratch_branch(args) && not_sim_user(args) && not_delete_branch_operation(args)
     io.puts "-"
     io.puts "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
     # using -f here enables the incremental check
     # this means that only the new commits are checked, not existing ones
-    cmd = "#{RIMCmd} status -f --verify-clean --gerrit #{args['--newrev']}"
+    cmd = "#{rim_cmd} status -f --verify-clean --gerrit #{args['--newrev']}"
     io.puts cmd
     io.puts
-    io.puts `"#{RIMCmd} --version"`
+    io.puts `#{rim_cmd} --version 2>&1`
     io.puts
-    io.puts `#{cmd}`
+    io.puts `#{cmd} 2>&1`
     io.puts
     io.puts "exit status: #{$?.exitstatus}"
     io.puts "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
     if $?.exitstatus != 0
-      raise 'rim failed'
+      raise 'rim status failed'
     end
   end
 end
