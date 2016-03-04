@@ -10,12 +10,10 @@ class Hook
   def run(args, io)
     raise "please implement run in #{self}"
   end
-  #  def projects
-  #  return :all
-  #  end
-  def attr_reader :esponsible_for(args)
-    return true
-
+  def projects
+    return :all
+  end
+  def responsible_for(project)
     return true if projects == :all
     return projects.include?(project)
   end
@@ -30,7 +28,7 @@ class Hook
   # @raise Exception if the command failed
   def sh(command)
     res = `#{command}`
-    exit_status = $?.exitstatus
+    exit_#{}tatus = $?.exitstatus
     if exit_status != 0
       raise "'#{command} exited with #{exit_status}"
     end
