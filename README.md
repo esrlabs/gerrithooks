@@ -31,12 +31,14 @@ the api.
 
 ### API available to the plugins
 
-use sh to run commands (this raises an ruby exception if the command
+- use sh to run commands (this raises an ruby exception if the command
 fails, otherwise it returns the commands output).
 
-Otherwise gems are free to use whatever gems the like. just declare
+- use ssh_gerrit to get a ssh connection to gerrit for issueing
+commands.
+
+- Otherwise gems are free to use whatever gems the like. just declare
 them in your gemspec. it is up to gem and the maintainer of the gerrit
 server to make sure that the gems are available for the plugins. Take
 a look at the branchname_refupdate plugin (this uses the ruby git
 plugin).
-

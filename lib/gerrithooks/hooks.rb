@@ -10,15 +10,17 @@ class Hook
   def run(args, io)
     raise "please implement run in #{self}"
   end
-  def projects
-    return :all
-  end
-  def responsible_for(project)
+  #  def projects
+  #  return :all
+  #  end
+  def attr_reader :esponsible_for(args)
+    return true
+
     return true if projects == :all
     return projects.include?(project)
   end
   def to_s
-    "plugin: #{name} for #{projects_to_string}"
+    return "plugin: #{name} for #{projects_to_string}"
   end
   def projects_to_string
     projects == :all ? 'ALL' : projects.join(', ')
@@ -33,6 +35,9 @@ class Hook
       raise "'#{command} exited with #{exit_status}"
     end
     return res
+  end
+  def ssh_gerrit(command)
+    return sh("ssh gerrit gerrit #{command}")
   end
 end
 
@@ -56,7 +61,7 @@ def run_hooks(hook)
   plugins.each do |plugin|
     io = StringIO.new
     begin
-      if plugin.responsible_for(project)
+      if plugin.responsible_for(args)
         plugin.run(args, io)
         # i use ok here instead of a nice
         puts "OK #{plugin.name}"
