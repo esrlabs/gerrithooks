@@ -1,6 +1,5 @@
 # coding: utf-8
 require 'frazzle/frazzle'
-registry = Frazzle::Registry.new('gerrithooks', '_', '_')
 
 class Hook
   attr_accessor :name
@@ -50,6 +49,7 @@ project = args['--project']
 raise 'no project given' unless project
 
 def run_hooks(hook)
+  registry = Frazzle::Registry.new('gerrithooks', '_', '_')
   plugins = registry.plugins(hook.downcase).map do |plugin|
     res = Hook.new(plugin.name)
     plugin.load(res)

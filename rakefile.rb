@@ -13,13 +13,13 @@ def run_rakefiles(command)
   end
 end
 
-desc 'package'
-task :package do
-  run_rakefiles('clean package')
+desc 'build gems'
+task :build_gems do
+  run_rakefiles('clean build')
 end
 
-desc 'install_packages'
-task :install_packages do
+desc 'install_gems'
+task :install_gems do
   run_rakefiles('install')
 end
 
