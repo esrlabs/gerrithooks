@@ -3,7 +3,7 @@ require 'frazzle/frazzle'
 
 class Hook
   attr_accessor :name
-  def intialize(name)
+  def initialize(name)
     @name = name
   end
   def run(args, io)
@@ -27,7 +27,7 @@ class Hook
   # @raise Exception if the command failed
   def sh(command)
     res = `#{command}`
-    exit_#{}tatus = $?.exitstatus
+    exit_status = $?.exitstatus
     if exit_status != 0
       raise "'#{command} exited with #{exit_status}"
     end
@@ -44,11 +44,11 @@ class String
   end
 end
 
-args = Hash[*ARGV]
-project = args['--project']
-raise 'no project given' unless project
-
 def run_hooks(hook)
+  args = Hash[*ARGV]
+  project = args['--project']
+  raise 'no project given' unless project
+  
   registry = Frazzle::Registry.new('gerrithooks', '_', '_')
   plugins = registry.plugins(hook.downcase).map do |plugin|
     res = Hook.new(plugin.name)
