@@ -14,7 +14,7 @@ def not_scratch_branch(args)
   !(args['--refname'] && args['--refname'].split('/').last =~ /^scratch_/)
 end
 
-def not_sim_user(arg)
+def not_sim_user(args)
   args['--uploader'].strip != "sim"
 end
 
@@ -29,11 +29,10 @@ def run(args, io)
 
   # IMPORTANT: ensure that the sim user name is correct! (i.e. not "sim sim@esrlabs.com", etc)
   if not_scratch_branch(args) && not_sim_user(args) && not_delete_branch_operation(args)
-    io.puts "-"
     io.puts "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
     # using -f here enables the incremental check
     # this means that only the new commits are checked, not existing ones
-    cmd = "#{rim_cmd} status -f --verify-clean --gerrit #{args['--newrev']}"
+    cmd = "#{rim_cmd} status -f -d --verify-clean --gerrit #{args['--newrev']}"
     io.puts cmd
     io.puts
     io.puts `#{rim_cmd} --version 2>&1`

@@ -56,15 +56,17 @@ def run_hooks(hook)
     res
   end
 
+  puts("-")
   plugins.each do |plugin|
     io = StringIO.new
     begin
-      if plugin.responsible_for(args)
+      if plugin.responsible_for(project)
         plugin.run(args, io)
         # i use ok here instead of a nice
         puts "OK #{plugin.name}"
         # unicode checkmark, because this is lost in the git output
-        puts io.string.indent(2)
+        s = io.string
+        puts s.indent(2) if s.size > 0
       end
     rescue => error
       puts "FAILED #{plugin.name}"
