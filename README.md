@@ -7,6 +7,11 @@ This implements a gem based plugin system for gerrit hooks.
 Create a gemset, install all your wanted plugins, link from rvm
 wrappers to the respective hooks in gerrit/hooks.
 
+I had to create the wrapper for the binaries manually with:
+`rvm wrapper 2.3.0@gerrithooks patchset-created` and
+`rvm wrapper 2.3.0@gerrithooks ref-updated`.
+
+
 ## Plugin-System
 
 ### Base
