@@ -15,7 +15,7 @@ def not_scratch_branch(args)
 end
 
 def not_sim_user(args)
-  args['--uploader'].strip != "sim"
+  args['--uploader'].strip != "sim (sim@esrlabs.com)"
 end
 
 def not_delete_branch_operation(args)
