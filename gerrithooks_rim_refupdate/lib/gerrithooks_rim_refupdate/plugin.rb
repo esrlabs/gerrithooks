@@ -6,7 +6,8 @@ def projects
     "BmwBDCevo/bdc",
     "BmwILA/cpm",
     "BmwILA/gpm",
-    "zgw/zgw2018"
+    "zgw/zgw2018",
+    "bmw/csm4/securityController"
   ]
 end
 
