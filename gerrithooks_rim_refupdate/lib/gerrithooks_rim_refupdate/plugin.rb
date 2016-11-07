@@ -7,7 +7,7 @@ def projects
     "BmwILA/cpm",
     "BmwILA/gpm",
     "zgw/zgw2018",
-    "bmw/csm4/securityController"
+    "Audi/GW/v3/Gateway"
   ]
 end
 

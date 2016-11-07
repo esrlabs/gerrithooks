@@ -1,5 +1,15 @@
 # adds all users that touched the files of the commit to the reviewer list
 # the users are checked against known users of gerrit
+def excluded_projects
+  [
+    'bmw/csm4/mainController'
+  ]
+end
+
+def responsible_for(project)
+  return !excluded_projects.include?(project)
+end
+           
 def run(args, io)
 
   require 'set'
