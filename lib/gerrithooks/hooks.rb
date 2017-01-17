@@ -66,7 +66,11 @@ def run_hooks(hook)
         puts "OK #{plugin.name}"
         # unicode checkmark, because this is lost in the git output
         s = io.string
-        puts s.indent(2) if s.size > 0
+        begin
+          puts s.indent(2) if s.size > 0
+        rescue Exception => e
+          puts "Problems with indenting: #{s}"
+        end  
       end
     rescue => error
       puts "FAILED #{plugin.name}"
