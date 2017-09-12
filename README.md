@@ -8,9 +8,8 @@ Create a gemset, install all your wanted plugins, link from rvm
 wrappers to the respective hooks in gerrit/hooks.
 
 I had to create the wrapper for the binaries manually with:
-`rvm wrapper 2.3.0@gerrithooks patchset-created` and
-`rvm wrapper 2.3.0@gerrithooks ref-updated`.
-
+`rvm wrapper 2.4.1@gerrithooks patchset-created` and
+`rvm wrapper 2.4.1@gerrithooks ref-updated`.
 
 ## Plugin-System
 
