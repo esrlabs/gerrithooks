@@ -36,5 +36,5 @@ describe GerrithooksReviewersPatchsetcreated do
       expect(io.string).to include("adding reviewers christian.koestlin@esrlabs.com\n")
     end
   end
-
+  
 end

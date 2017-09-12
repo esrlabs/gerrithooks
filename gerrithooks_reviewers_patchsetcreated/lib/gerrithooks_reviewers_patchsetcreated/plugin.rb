@@ -30,8 +30,13 @@ def run(args, io)
   emails = Set.new(blames.map {|l| l.to_enum(:scan, /^\w* \(<(.*@.*)>/).map { Regexp.last_match[1].strip }}.flatten)
 
   reviewers = emails.intersection(registered_users).to_a
+  reviewers = filter_reviewers(reviewers)
   io.puts "adding reviewers #{reviewers.join(' ')}"
 
   add_reviewers = reviewers.map{|email|"-a #{email}"}.join(' ')
   ssh_gerrit("set-reviewers --project #{project} #{add_reviewers} #{commit}")
+end
+
+def filter_reviewers(reviewers)
+  reviewers.delete_if{|r|r == "info@esrlabs.com"}
 end
