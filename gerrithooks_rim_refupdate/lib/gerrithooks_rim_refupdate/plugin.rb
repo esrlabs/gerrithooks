@@ -7,7 +7,8 @@ def projects
     "BmwILA/cpm",
     "BmwILA/gpm",
     "zgw/zgw2018",
-    "Audi/GW/v3/Gateway"
+    "Audi/GW/v3/Gateway",
+    'BmwBCP21/prototype'
   ]
 end
 
