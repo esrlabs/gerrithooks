@@ -8,7 +8,9 @@ def projects
     "BmwILA/gpm",
     "zgw/zgw2018",
     "Audi/GW/v3/Gateway",
-    'BmwBCP21/prototype'
+    'BmwBCP21/prototype',
+    'hkfm2021/E_esrl_ar_stack',
+    'ssg2021/E_esrl_ar_stack',
   ]
 end
 
