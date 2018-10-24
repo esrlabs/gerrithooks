@@ -14,6 +14,22 @@ def projects
   ]
 end
 
+def whitelist
+  { 'hkfm2021/E_esrl_ar_stack' => /^master$|^develop$/,
+    'ssg2021/E_esrl_ar_stack'  => /^master$|^develop$/
+  }
+end
+
+def not_whitelisted(args)
+  if (args['--project'])
+    p = whitelist.find { |project, wlist| args['--project'].include?(project) }
+    if p
+      return !(args['--refname'] && args['--refname'].split('/').last =~ p[1])
+    end
+  end
+  return true
+end
+
 def not_scratch_branch(args)
   !(args['--refname'] && args['--refname'].split('/').last =~ /^scratch_/)
 end
@@ -32,7 +48,7 @@ def run(args, io)
   rim_cmd = "rim"
 
   # IMPORTANT: ensure that the sim user name is correct! (i.e. not "sim sim@esrlabs.com", etc)
-  if not_scratch_branch(args) && not_sim_user(args) && not_delete_branch_operation(args)
+  if not_whitelisted(args) && not_scratch_branch(args) && not_sim_user(args) && not_delete_branch_operation(args)
     io.puts "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
     # using -f here enables the incremental check
     # this means that only the new commits are checked, not existing ones
