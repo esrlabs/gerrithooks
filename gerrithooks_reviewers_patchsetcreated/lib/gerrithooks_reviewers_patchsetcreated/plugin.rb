@@ -9,7 +9,7 @@ end
 def responsible_for(project)
   return !excluded_projects.include?(project)
 end
-           
+
 def run(args, io)
 
   require 'set'
