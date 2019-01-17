@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Arthur Alfredo"]
   spec.email         = ["arthur.braga@esrlabs.com"]
 
-  spec.summary       = %q{plugin to gerrithooks that checks the if a ticket number is present in the commit message.}
+  spec.summary       = %q{plugin to gerrithooks that ensures that a ticket number is present in the commit message.}
   spec.description   = %q{.}
   spec.homepage      = "https://github.com/esrlabs/gerrithooks/tree/master/gerrithooks_ticketnumber_refupdate"
 
