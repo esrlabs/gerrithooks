@@ -3,13 +3,15 @@ require 'git'
 
 def projects
   [
-    'ssg2021/E_esrl_ar_stack'
+    'ssg2021/E_esrl_ar_stack',
+    'hkfm2021/E_esrl_ar_stack'
   ]
 end
 
 def branches
   { 
     'ssg2021/E_esrl_ar_stack' => ['esrdev', 'esrmaster'],
+    'hkfm2021/E_esrl_ar_stack' => ['esrdev', 'esrmaster']
   }
 end
 
