@@ -23,12 +23,12 @@ def run(args, io)
     return unless branches[args['--project']].include?(branch)
   end
 
-  return if /^\[?[A-Z]{3}-[0-9]{4}\.?/i.match(commit)
+  return if /^\[?(([A-Z]{3}-[0-9]{4})|(no.ticket)(.id)?)\]?/i.match(commit)
 
   raise <<~ERROR
          Please add a JIRA ticket number to the commit message in the following formats:
-         AAA-9999 COMMIT_MESSAGE
-				 [AAA-9999] COMMIT_MESSAGE
+         AAA-9999: COMMIT_MESSAGE
+         No ticket: COMMIT_MESSAGE
          The first three letters should be the Project abbreviation.
   ERROR
 end
