@@ -9,13 +9,13 @@ def projects
     "zgw/zgw2018",
     "Audi/GW/v3/Gateway",
     'BmwBCP21/prototype',
-    'hkfm2021/E_esrl_ar_stack',
+    'hkfm2021/SW_bmw_hkfm_sp2021',
     'ssg2021/E_esrl_ar_stack',
   ]
 end
 
 def whitelist
-  { 'hkfm2021/E_esrl_ar_stack' => /^master$|^develop$/,
+  { 'hkfm2021/SW_bmw_hkfm_sp2021' => /^master$|^develop$/,
     'ssg2021/E_esrl_ar_stack'  => /^master$|^develop$/
   }
 end
