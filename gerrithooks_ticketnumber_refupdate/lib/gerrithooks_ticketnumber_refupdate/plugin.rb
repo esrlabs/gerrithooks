@@ -23,7 +23,7 @@ def run(args, io)
     return unless branches[args['--project']].include?(branch)
   end
 
-  return if /^\[?(([A-Z]{3}-[0-9]{4})|(no.ticket)(.id)?)\]?/i.match(commit)
+  return if /^\[?(([A-Z]{3}-[0-9]+)|(no.ticket)(.id)?)\]?/i.match(commit)
 
   raise <<~ERROR
          Please add a JIRA ticket number to the commit message in the following formats:
