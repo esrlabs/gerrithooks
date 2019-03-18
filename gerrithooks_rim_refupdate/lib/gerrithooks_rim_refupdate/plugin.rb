@@ -11,6 +11,7 @@ def projects
     'BmwBCP21/prototype',
     'hkfm2021/SW_bmw_hkfm_sp2021',
     'ssg2021/SW_bmw_ssg_sp2021',
+    'Audi/HCP5/vdc'
   ]
 end
 
