@@ -22,6 +22,15 @@ The gems follow the naming convention
 reviewers whenever a changeset is create, create a gem called
 `gerrithooks_reviewers_patchsetcreated`.
 
+### Creating a new hook
+
+`bundle gem gerrithook_autosubmit_commentadded`
+
+Remove .git
+Adjust .gitignore
+Rename Rakefile to rakefile.rb
+Implement functionality
+
 ### Implementation
 
 Each gem should contain a ruby file called plugin.rb in `gemname`.
