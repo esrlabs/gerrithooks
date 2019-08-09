@@ -10,11 +10,11 @@ def base_url
   "http://127.0.0.1:8080/a/changes/"
 end
 def user
-  ENV["AUTOSUBMIT_USER"]
+  ENV["GERRITHOOKS_USER"]
 end
 
 def pass
-  ENV["AUTOSUBMIT_PASSWORD"]
+  ENV["GERRITHOOKS_PASSWORD"]
 end
 
 def has_author_review?(change)
