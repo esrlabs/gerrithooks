@@ -11,11 +11,11 @@ def base_url
   "http://127.0.0.1:8080/a/changes/"
 end
 def user
-  ENV["AUTOREBASE_USER"]
+  ENV["GERRITHOOKS_USER"]
 end
 
 def pass
-  ENV["AUTOREBASE_PASSWORD"]
+  ENV["GERRITHOOKS_PASSWORD"]
 end
 
 def rebase(change_id, http_session)
