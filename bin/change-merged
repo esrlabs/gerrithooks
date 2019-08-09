@@ -1,0 +1,5 @@
+# coding: utf-8
+
+require 'gerrithooks/hooks'
+
+run_hooks('ChangeMerged')
