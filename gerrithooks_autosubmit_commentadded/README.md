@@ -19,8 +19,8 @@ Or install it yourself as:
 Set the following environment variables:
 
     AUTOSUBMIT_PROJECTS="comma,separated,projects"
-    AUTOSUBMIT_USER="user-with-rest-api-access"
-    AUTOSUBMIT_PASSWORD="password"
+    GERRITHOOK_USER="user-with-rest-api-access"
+    GERRITHOOK_PASSWORD="password"
 
 ## Development
 
