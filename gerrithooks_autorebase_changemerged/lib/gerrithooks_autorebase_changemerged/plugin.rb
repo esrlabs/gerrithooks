@@ -36,7 +36,7 @@ def run(args, io)
     "-label:Code-Review=-2"
   ].join("+")
   uri = URI("#{base_url}?q=#{params}")
-  Net::HTTP.start(uri.host, uri.port, :use_ssl => true) do |http|
+  Net::HTTP.start(uri.host, uri.port, :use_ssl => false) do |http|
     request = Net::HTTP::Get.new uri
     request.basic_auth user, pass
     response = http.request request

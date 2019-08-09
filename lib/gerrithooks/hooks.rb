@@ -48,7 +48,7 @@ def run_hooks(hook)
   args = Hash[*ARGV]
   project = args['--project']
   raise 'no project given' unless project
-  
+
   registry = Frazzle::Registry.new('gerrithooks', '_', '_')
   plugins = registry.plugins(hook.downcase).map do |plugin|
     res = Hook.new(plugin.name)
@@ -70,7 +70,7 @@ def run_hooks(hook)
           puts s.indent(2) if s.size > 0
         rescue Exception => e
           puts "Problems with indenting: #{s}"
-        end  
+        end
       end
     rescue => error
       puts "FAILED #{plugin.name}"
