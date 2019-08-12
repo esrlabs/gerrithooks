@@ -1,5 +1,6 @@
 # coding: utf-8
 require "net/http"
+require "json"
 
 def projects
   ENV["AUTOSUBMIT_PROJECTS"].split(",")
@@ -20,7 +21,7 @@ end
 def has_author_review?(change)
   owner = change["owner"]["_account_id"]
   reviewers  = change["labels"]["Code-Review"]["all"]
-               .filter { |review| review["value"] == 2 }
+               .select { |review| review["value"] == 2 }
                .map { |review| review["_account_id"] }
   reviewers.include? owner
 end
