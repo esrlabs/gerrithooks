@@ -11,7 +11,7 @@ def projects
     'BmwBCP21/prototype',
     'hkfm2021/SW_bmw_hkfm_sp2021',
     'ssg2021/SW_bmw_ssg_sp2021',
-    'Audi/HCP5/vdc'
+    'HCP5/VehicleDomain/VehicleDomainController'
   ]
 end
 
@@ -36,7 +36,7 @@ def not_scratch_branch(args)
 end
 
 def not_sim_user(args)
-  args['--uploader'].strip != "sim (sim@esrlabs.com)"
+  args['--uploader-username'].strip != "sim (sim@esrlabs.com)"
 end
 
 def not_delete_branch_operation(args)
