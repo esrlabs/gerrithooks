@@ -2,4 +2,4 @@
 
 require 'gerrithooks/hooks'
 
-run_hooks('CommentAdded')
+run_hooks('CommitReceived')

@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'gerrithooks_branchname_refupdate/version'
+require 'gerrithooks_ticketnumber_commitreceived/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "gerrithooks_branchname_refupdate"
-  spec.version       = GerrithooksBranchnameRefupdate::VERSION
-  spec.authors       = ["Christian Köstlin"]
-  spec.email         = ["christian.koestlin@esrlabs.com"]
+  spec.name          = "gerrithooks_ticketnumber_commitreceived"
+  spec.version       = GerrithooksTicketnumberRefupdate::VERSION
+  spec.authors       = ["Arthur Alfredo"]
+  spec.email         = ["arthur.braga@esrlabs.com"]
 
-  spec.summary       = %q{plugin to gerrithooks that checks the branchnames.}
+  spec.summary       = %q{plugin to gerrithooks that ensures that a ticket number is present in the commit message.}
   spec.description   = %q{.}
-  spec.homepage      = "http://www.google.com"
+  spec.homepage      = "https://github.com/esrlabs/gerrithooks/tree/master/gerrithooks_ticketnumber_refupdate"
 
   spec.files         = Dir.glob("lib/**/*.rb")
   spec.bindir        = "exe"
