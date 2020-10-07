@@ -1,5 +1,6 @@
 # coding: utf-8
 require 'frazzle/frazzle'
+require 'stringio'
 
 class Hook
   attr_accessor :name
