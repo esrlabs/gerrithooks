@@ -3,15 +3,15 @@ require 'git'
 
 def projects
   [
-    'ssg2021/E_esrl_ar_stack',
-    'hkfm2021/E_esrl_ar_stack'
+    'ssg2021/SW_bmw_ssg_sp2021',
+    'hkfm2021/SW_bmw_hkfm_sp2021'
   ]
 end
 
 def branches
   { 
-    'ssg2021/E_esrl_ar_stack' => ['esrdev', 'esrmaster'],
-    'hkfm2021/E_esrl_ar_stack' => ['esrdev', 'esrmaster']
+    'ssg2021/SW_bmw_ssg_sp2021' => ['esrdev', 'esrmaster'],
+    'hkfm2021/SW_bmw_hkfm_sp2021' => ['esrdev', 'esrmaster']
   }
 end
 

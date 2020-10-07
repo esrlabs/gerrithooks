@@ -1,10 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'gerrithooks_rim_refupdate/version'
+require 'gerrithooks_rim_commitreceived/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "gerrithooks_rim_refupdate"
+  spec.name          = "gerrithooks_rim_commitreceived"
   spec.version       = GerrithooksRimRefupdate::VERSION
   spec.authors       = ["Christian Koestlin"]
   spec.email         = ["christian.koestlin@esrlabs.com"]
